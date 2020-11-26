@@ -1,0 +1,38 @@
+.relate {
+    h3 {
+    }
+    ul.relate-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        overflow-y: scroll;
+        white-space: nowrap;
+        li.relate-item {
+            width: 40vw;
+            margin: 0 5px;
+            display: inline-block;
+
+            .thumb {
+                position: relative;
+                height: 25vw;
+                overflow: hidden;
+                img {
+                    max-width: 100%;
+                    filter: brightness(0.6);
+                }
+                span {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    color: white;
+                }
+            }
+            h5 {
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}

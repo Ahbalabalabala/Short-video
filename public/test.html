@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.staticfile.org/jquery/1.12.3/jquery.min.js"></script>
+    </head>
+    <body>
+        <script>
+            var str =
+                '本片来自新片场创作人[a: href="https://www.xinpianchang.com/u10950509?from=articleList" content="GURULAB"]（代理方/制作方），[a: href="https://www.xinpianchang.com/u10098203?from=articleList" content="赵伯祚"]（制片人/监制），[a: href="https://www.xinpianchang.com/u11000319?from=articleList" content="刘潶泗"]（策划/导演/剪辑），[a: href="https://www.xinpianchang.com/u10674496?from=articleList" content="姚金利"]（摄影指导），[a: href="https://www.xinpianchang.com/u10210772?from=articleList" content="周雅倩"]（造型指导）';
+
+            function xx(str) {
+                // console.log(str);
+                // console.log(str.match(/\[a: href="[^\，]+" content="[^\，]+"\]/g));
+                var arr = str.match(/\[a: href="[^\，]+" content="[^\，]+"\]/g);
+
+                var Parsed = arr.map((element, index) => {
+                    var tmp = element.split(" ");
+                    tmp.shift();
+                    // tmp[0] = tmp[0].replace("[", "");
+                    // tmp[0] = tmp[0].replace(":", "");
+                    // tmp[1]
+
+                    return tmp.map((str) => {
+                        var patt = /".+"/;
+                        return patt.exec(str)[0].replace('"', "");
+                    });
+                });
+                // console.log(Parsed);
+
+                var y = str.split(/\[a: href="[^\，]+" content="[^\，]+"\]/g);
+                // console.log(y);
+                y.forEach((element, index) => {
+                    if (Parsed[index]) {
+                        y[index] =
+                            element + `<a href="${Parsed[index][0]}">${Parsed[index][1]}</a>`;
+                    }
+                });
+
+                // console.log(y.join());
+                return y.join()
+            }
+            console.log(xx(str));;
+        </script>
+    </body>
+</html>
